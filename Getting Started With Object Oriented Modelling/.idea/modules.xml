@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Book Database/Book Database.iml" filepath="$PROJECT_DIR$/Book Database/Book Database.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Getting Started With Object Oriented Modelling.iml" filepath="$PROJECT_DIR$/.idea/Getting Started With Object Oriented Modelling.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Payment/Payment.iml" filepath="$PROJECT_DIR$/Payment/Payment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Social Media/Social Media.iml" filepath="$PROJECT_DIR$/Social Media/Social Media.iml" />
       <module fileurl="file://$PROJECT_DIR$/TicTacToe/TicTacToe.iml" filepath="$PROJECT_DIR$/TicTacToe/TicTacToe.iml" />
     </modules>
   </component>

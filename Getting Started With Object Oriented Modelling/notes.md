@@ -45,5 +45,11 @@ Diff btw abstract classes and interface
 overload/ride
 runtime , compiletime polymorphism
 
+dynamic dispatch
+silent killer -> pigeon fly vs flamingofly
+
+SRP = single rsp
+SOLID
+
 
 
