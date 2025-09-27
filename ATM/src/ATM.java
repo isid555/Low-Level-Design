@@ -1,25 +1,72 @@
 public class ATM {
+    private ATMState currentState;
+    private Card card;
+    private Transaction currentTransaction;
     private CardReader cardReader;
     private CashDispenser cashDispenser;
-    private IBankService bankService; // interface instead of direct RealBankService
+    private IBankService bankService;
 
     public ATM(CardReader cardReader, CashDispenser cashDispenser, IBankService bankService) {
         this.cardReader = cardReader;
         this.cashDispenser = cashDispenser;
         this.bankService = bankService;
+        this.currentState = new WaitingForCardState();
     }
 
-    public void startTransaction(Card card, String pin, Transaction txn) {
-        if (cardReader.injectCard(card) && bankService.validatePin(card, pin)) {
-            executeTransaction(txn, card);
-        } else {
-            System.out.println("[ATM] Invalid card or PIN");
-            cardReader.ejectCard(card);
-        }
+    public void insertCard(Card card) {
+        currentState.insertCard(this, card);
     }
 
-    private void executeTransaction(Transaction txn, Card card) {
-        txn.makeTransaction(bankService, cashDispenser, card);
-        cardReader.ejectCard(card);
+    public void ejectCard() {
+        currentState.ejectCard(this);
+    }
+
+    public void enterPin(String pin) {
+        currentState.enterPin(this, pin);
+    }
+
+    public void selectTransaction(Transaction transaction) {
+        currentState.selectTransaction(this, transaction);
+    }
+
+    public void executeTransaction() {
+        currentState.executeTransaction(this);
+    }
+
+    // getters and setters for state and fields
+    public void setState(ATMState state) {
+        this.currentState = state;
+    }
+
+    public ATMState getState() {
+        return currentState;
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public void setCard(Card card) {
+        this.card = card;
+    }
+
+    public Transaction getCurrentTransaction() {
+        return currentTransaction;
+    }
+
+    public void setCurrentTransaction(Transaction currentTransaction) {
+        this.currentTransaction = currentTransaction;
+    }
+
+    public CardReader getCardReader() {
+        return cardReader;
+    }
+
+    public CashDispenser getCashDispenser() {
+        return cashDispenser;
+    }
+
+    public IBankService getBankService() {
+        return bankService;
     }
 }
